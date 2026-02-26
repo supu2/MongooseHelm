@@ -114,7 +114,7 @@
   access = "c2s"
   shaper = "normal"
   max_stanza_size = 65536
-  tls.verify_mode = "none"
+  tls.mode = "starttls_required"
   tls.certfile = "priv/ssl/{{ .Values.certs.fullChain }}"
   tls.keyfile = "priv/ssl/{{ .Values.certs.privKey }}"
 
