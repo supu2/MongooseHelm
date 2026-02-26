@@ -179,21 +179,15 @@
 
 [services.service_mongoose_system_metrics]
 
-[modules.mod_pubsub]	
-  ## 1. Enable the PEP plugin (CRITICAL for OMEMO/Avatars)	
-  plugins = ["flat", "pep"]	
-  ## 2. Set the default access model to 'open'	
-  ## This is often required for OMEMO so clients can fetch 	
-  ## encryption bundles without complex permission errors.	
-  default_node_config = { access_model = "open" }	
-  ## 3. Recommended performance settings for mobile	
-  ignore_pep_from_offline = true	
-  last_item_cache = "rdbms"	
+[modules.mod_pubsub]
+  plugins = ["flat", "pep"]
+  default_node_config = { access_model = "open" }
+  ignore_pep_from_offline = true
+  last_item_cache = "rdbms"
     
   backend = "rdbms"
 
 [modules.mod_extdisco]
-  ## List of services to be discovered by clients
   services = [
     { type = "stun", transport = "udp", host = "{{ .Values.stun.host }}", port = 3478 },
     { type = "turn", transport = "udp", host = "{{ .Values.turn.host }}", port = 3478, username = "{{ .Values.turn.username }}", password = "{{ .Values.turn.password }}" },
