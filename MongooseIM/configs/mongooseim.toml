@@ -183,8 +183,12 @@
   plugins = ["flat", "pep"]
   default_node_config = { access_model = "open" }
   ignore_pep_from_offline = true
-  last_item_cache = "rdbms"
-    
+  last_item_cache = "rdbms"  
+  backend = "rdbms"
+
+[modules.mod_caps]
+  cache_size = 2000
+  cache_life_time = 10_000
   backend = "rdbms"
 
 [modules.mod_extdisco]
