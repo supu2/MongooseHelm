@@ -188,11 +188,19 @@
   backend = "rdbms"
 
 [modules.mod_extdisco]
-  services = [
-    { type = "stun", transport = "udp", host = "{{ .Values.stun.host }}", port = 3478 },
-    { type = "turn", transport = "udp", host = "{{ .Values.turn.host }}", port = 3478, username = "{{ .Values.turn.username }}", password = "{{ .Values.turn.password }}" },
-    { type = "turn", transport = "tcp", host = "{{ .Values.turn.host }}", port = 3478, username = "{{ .Values.turn.username }}", password = "{{ .Values.turn.password }}" }
-  ]
+  [[modules.mod_extdisco.service]]
+   type = "stun"
+    host = "{{ .Values.stun.host }}"
+    port = 3478
+    transport = "udp"
+  [[modules.mod_extdisco.service]]
+   type = "turn"
+    host = "{{ .Values.turn.host }}"
+    port = 3478
+    transport = "udp"
+    username = "{{ .Values.turn.username }}"
+    password = "{{ .Values.turn.password }}"
+
 
 [modules.mod_csi]
 [modules.mod_sasl2]
