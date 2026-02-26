@@ -5,7 +5,7 @@
 [general]
   loglevel = "warning"
   default_server_domain = "localhost"
-  hosts = "{{ .Values.hosts }}"
+  hosts = {{ .Values.hosts }}
   registration_timeout = "infinity"
   language = "en"
   sm_backend = "{{ .Values.volatileDatabase }}"
