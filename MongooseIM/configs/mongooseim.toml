@@ -133,7 +133,9 @@
   port = 5269
   shaper = "fast"
   max_stanza_size = 131072
-
+  tls.mode = "starttls"
+  tls.certfile = "priv/ssl/{{ .Values.certs.fullChain }}"
+  tls.keyfile = "priv/ssl/{{ .Values.certs.privKey }}"
 [[listen.component]]
   port = 8888
   access = "all"
