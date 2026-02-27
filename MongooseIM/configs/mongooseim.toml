@@ -217,7 +217,13 @@
 
 [modules.mod_disco]
   users_can_see_hidden_services = false
-
+  server_info = [
+      { name = "admin-addresses", urls = ["xmpp:admin@{{ .Values.domain }}", "mailto:admin@{{ .Values.domain }}"] },
+      { name = "abuse-addresses", urls = ["mailto:abuse@{{ .Values.domain }}"] },
+      { name = "feedback-addresses", urls = ["https://{{ .Values.domain }}/feedback"] },
+      { name = "security-addresses", urls = ["xmpp:security@{{ .Values.domain }}", "mailto:security@{{ .Values.domain }}"] },
+      { name = "support-addresses", urls = ["xmpp:support@{{ .Values.domain }}", "https://support.{{ .Values.domain }}"] }
+    ]
 [modules.mod_last]
   backend = "{{ .Values.persistentDatabase }}"
 
@@ -261,7 +267,19 @@
   backend = "{{ .Values.volatileDatabase }}"
 
 [modules.mod_carboncopy]
-
+[modules.mod_mam]	
+  backend = "rdbms"	
+  [modules.mod_mam.pm]	
+  [modules.mod_mam.muc]	
+    host = "conference.@HOST@"	
+[modules.mod_muc]	
+  host = "conference.@HOST@"	
+  backend = "rdbms"	
+  online_backend = "cets"	
+[modules.mod_muc_light]	
+  host = "muclight.@HOST@"	
+  backend = "rdbms"	
+[modules.mod_push_service_mongoosepush]
 [shaper.normal]
   max_rate = 1000
 
