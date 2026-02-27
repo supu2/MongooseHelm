@@ -209,9 +209,9 @@
 
 [modules.mod_csi]
 
-#[modules.mod_sasl2]
+[modules.mod_sasl2]
 
-#[modules.mod_bind2]
+[modules.mod_bind2]
 
 [modules.mod_adhoc]
 
