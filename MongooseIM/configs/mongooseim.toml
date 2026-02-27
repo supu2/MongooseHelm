@@ -267,18 +267,18 @@
   backend = "{{ .Values.volatileDatabase }}"
 
 [modules.mod_carboncopy]
-[modules.mod_mam]	
-  backend = "rdbms"	
-  [modules.mod_mam.pm]	
-  [modules.mod_mam.muc]	
-    host = "conference.@HOST@"	
-[modules.mod_muc]	
-  host = "conference.@HOST@"	
-  backend = "rdbms"	
-  online_backend = "cets"	
-[modules.mod_muc_light]	
-  host = "muclight.@HOST@"	
-  backend = "rdbms"	
+[modules.mod_mam]
+  backend = "rdbms"
+  [modules.mod_mam.pm]
+  [modules.mod_mam.muc]
+    host = "conference.@HOST@"
+[modules.mod_muc]
+  host = "conference.@HOST@"
+  backend = "rdbms"
+  online_backend = "cets"
+[modules.mod_muc_light]
+  host = "muclight.@HOST@"
+  backend = "rdbms"
 [modules.mod_push_service_mongoosepush]
 [shaper.normal]
   max_rate = 1000
