@@ -3,7 +3,7 @@
 {{ end -}}
 
 [general]
-  loglevel = "warning"
+  loglevel = "info"
   default_server_domain = "{{ .Values.domain}}"
   hosts = {{ .Values.hosts }}
   registration_timeout = "infinity"
@@ -27,6 +27,7 @@
 
 [[listen.http]]
   port = 5285
+  proxy_protocol = true
   transport.num_acceptors = 10
   transport.max_connections = 1024
   tls.verify_mode = "none"
@@ -114,6 +115,7 @@
   access = "c2s"
   shaper = "normal"
   max_stanza_size = 65536
+  proxy_protocol = true
   tls.mode = "starttls"
   tls.verify_mode = "none"
   tls.certfile = "priv/ssl/{{ .Values.certs.fullChain }}"
@@ -124,6 +126,7 @@
   access = "c2s"
   shaper = "normal"
   max_stanza_size = 65536
+  proxy_protocol = true
   tls.mode = "tls"
   tls.verify_mode = "none"
   tls.certfile = "priv/ssl/{{ .Values.certs.fullChain }}"
@@ -133,6 +136,7 @@
   port = 5269
   shaper = "fast"
   max_stanza_size = 131072
+  proxy_protocol = true
   tls.mode = "starttls"
   tls.certfile = "priv/ssl/{{ .Values.certs.fullChain }}"
   tls.keyfile = "priv/ssl/{{ .Values.certs.privKey }}"
@@ -377,8 +381,7 @@
   port = 5269
 
   [s2s.outgoing.tls]
-    certfile = "priv/ssl/{{ .Values.certs.fullChain }}"
-    keyfile = "priv/ssl/{{ .Values.certs.privKey }}"
+
 
 #[[host_config]]
 #  host = "anonymous.localhost"
